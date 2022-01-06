@@ -1,7 +1,9 @@
 // #region 'IMPORTING STUFF'
 import { useState } from 'react'
 import initialEmails from './data/emails'
+
 import './App.css'
+
 import Header from './components/Header'
 import LeftMenuSidebar from './components/LeftMenuSidebar'
 import MainMenu from './components/mainMenu'

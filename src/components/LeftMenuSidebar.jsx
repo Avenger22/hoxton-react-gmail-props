@@ -1,3 +1,5 @@
+import '../components/css/LeftMenuSidebar.css'
+
 function LeftMenuSidebar(props) {
 
     return (

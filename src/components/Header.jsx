@@ -1,3 +1,5 @@
+import '../components/css/Header.css'
+
 function Header() {
 
     return (
