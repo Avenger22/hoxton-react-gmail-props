@@ -2,14 +2,16 @@ import '../css/LeftMenuSidebar.css'
 
 function LeftMenuSidebarStarred(props) {
 
+    const {currentTab, starredEmails, setCurrentTab} = props
+
     return (
 
       <li
-        className={`item ${props.currentTab === 'starred' ? 'active' : ''}`}
-        onClick={() => props.setCurrentTab('starred')}
+        className={`item ${currentTab === 'starred' ? 'active' : ''}`}
+        onClick={() => setCurrentTab('starred')}
       >
         <span className="label">Starred</span>
-        <span className="count">{props.starredEmails.length}</span>
+        <span className="count">{starredEmails.length}</span>
       </li>
       
     )

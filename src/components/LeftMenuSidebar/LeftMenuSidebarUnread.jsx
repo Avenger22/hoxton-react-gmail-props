@@ -2,17 +2,19 @@ import '../css/LeftMenuSidebar.css'
 
 function LeftMenuSidebarUnread(props) {
 
-    return (
+  const {currentTab, unreadEmails, setCurrentTab} = props
 
-        <li
-          className={`item ${props.currentTab === 'inbox' ? 'active' : ''}`}
-          onClick={() => props.setCurrentTab('inbox')}
-        >
-          <span className="label">Inbox</span>
-          <span className="count">{props.unreadEmails.length}</span>
-        </li>
+  return (
 
-    )
+    <li
+      className={`item ${currentTab === 'inbox' ? 'active' : ''}`}
+      onClick={() => setCurrentTab('inbox')}
+    >
+      <span className="label">Inbox</span>
+      <span className="count">{unreadEmails.length}</span>
+    </li>
+
+  )
 
 }
 

@@ -6,6 +6,8 @@ import LeftMenuSidebarHideRead from '../LeftMenuSidebar/LeftMenuSidebarHideRead'
 
 function LeftMenuSidebar(props) {
 
+  const {currentTab, setCurrentTab, unreadEmails, hideRead, setHideRead, starredEmails} = props
+
   return (
     
     <nav className="left-menu">
@@ -13,20 +15,20 @@ function LeftMenuSidebar(props) {
       <ul className="inbox-list">
 
         <LeftMenuSidebarUnread 
-          currentTab = {props.currentTab}
-          setCurrentTab = {props.setCurrentTab}
-          unreadEmails = {props.unreadEmails} 
+          currentTab = {currentTab}
+          setCurrentTab = {setCurrentTab}
+          unreadEmails = {unreadEmails} 
         />
 
         <LeftMenuSidebarStarred 
-          currentTab = {props.currentTab}
-          setCurrentTab = {props.setCurrentTab}
-          starredEmails = {props.starredEmails}
+          currentTab = {currentTab}
+          setCurrentTab = {setCurrentTab}
+          starredEmails = {starredEmails}
         />
 
         <LeftMenuSidebarHideRead 
-          hideRead = {props.hideRead}
-          setHideRead = {props.setHideRead}
+          hideRead = {hideRead}
+          setHideRead = {setHideRead}
         />
 
       </ul>

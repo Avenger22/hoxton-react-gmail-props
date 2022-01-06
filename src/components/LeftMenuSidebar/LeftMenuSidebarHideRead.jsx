@@ -2,6 +2,8 @@ import '../css/LeftMenuSidebar.css'
 
 function LeftMenuSidebarHideRead(props) {
 
+  const {hideRead, setHideRead} = props
+
     return (
 
         <li className="item toggle">
@@ -9,8 +11,8 @@ function LeftMenuSidebarHideRead(props) {
           <input
             id="hide-read"
             type="checkbox"
-            checked={props.hideRead}
-            onChange={e => props.setHideRead(e.target.checked)}
+            checked={hideRead}
+            onChange={e => setHideRead(e.target.checked)}
           />
         </li>
 

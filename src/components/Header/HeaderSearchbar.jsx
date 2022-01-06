@@ -2,6 +2,8 @@ import '../css/Header.css'
 
 function HeaderSearchbar(props) {
 
+    const {searchTitle} = props
+
     return (
 
         <div className="search">
@@ -11,7 +13,7 @@ function HeaderSearchbar(props) {
                 onSubmit={function (event) {
                     event.preventDefault()
                     const title = event.target.title.value
-                    props.searchTitle(title)
+                    searchTitle(title)
                     event.target.reset()
                 }}
             >

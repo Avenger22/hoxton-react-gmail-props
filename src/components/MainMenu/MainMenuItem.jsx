@@ -2,11 +2,13 @@ import '../css/MainMenu.css'
 
 function MainMenuItem(props) {
 
+    const {filteredEmails, toggleRead, toggleStar} = props
+
     return (
 
         <ul>
 
-            {props.filteredEmails.map((email, index) => (
+            {filteredEmails.map((email, index) => (
 
             <li
                 key={index}
@@ -19,7 +21,7 @@ function MainMenuItem(props) {
                         className="select-checkbox"
                         type="checkbox"
                         checked={email.read}
-                        onChange={() => props.toggleRead(email)}
+                        onChange={() => toggleRead(email)}
                     />
 
                 </div>
@@ -30,7 +32,7 @@ function MainMenuItem(props) {
                         className="star-checkbox"
                         type="checkbox"
                         checked={email.starred}
-                        onChange={() => props.toggleStar(email)}
+                        onChange={() => toggleStar(email)}
                     />
 
                 </div>

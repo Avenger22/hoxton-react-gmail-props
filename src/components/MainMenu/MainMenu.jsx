@@ -3,15 +3,17 @@ import MainMenuItem from './MainMenuItem'
 
 function MainMenu(props) {
 
+  const {filteredEmails, toggleRead, toggleStar, searchTitle} = props
+
   return (
 
     <main className="emails">
 
       <MainMenuItem 
-        filteredEmails = {props.filteredEmails} 
-        toggleRead = {props.toggleRead}
-        toggleStar = {props.toggleStar}
-        searchTitle = {props.searchTitle}
+        filteredEmails = {filteredEmails} 
+        toggleRead = {toggleRead}
+        toggleStar = {toggleStar}
+        searchTitle = {searchTitle}
       />
 
     </main>
