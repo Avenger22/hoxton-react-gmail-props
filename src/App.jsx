@@ -11,13 +11,13 @@ import MainMenu from './components/MainMenu/MainMenu'
 
 const getReadEmails = emails => emails.filter(email => !email.read)
 const getStarredEmails = emails => emails.filter(email => email.starred)
-const searchEmails = (emailsParam, searchItemParam) => {
+// const searchEmails = (emailsParam, searchItemParam) => {
 
-  emailsParam.filter(item => {
-    item.title.toLowerCase().includes(searchItemParam.toLowerCase() || item.sender.toLowerCase().includes(searchItemParam.toLowerCase()))
-  })
+//   emailsParam.filter(item => {
+//     item.title.toLowerCase().includes(searchItemParam.toLowerCase() || item.sender.toLowerCase().includes(searchItemParam.toLowerCase()))
+//   })
 
-}
+// }
 
 function App() {
 
@@ -56,17 +56,22 @@ function App() {
 
   let filteredEmails = emails
 
+  if (searchItem) {
+
+    filteredEmails = filteredEmails.filter((email) =>
+      email.title.toLowerCase().includes(searchItem.toLowerCase() || email.sender.toLowerCase().includes(searchItem.toLowerCase()))
+    )
+
+    console.log(filteredEmails)
+  }
+  
   if (hideRead) { 
     filteredEmails = getReadEmails(filteredEmails)
   }
 
+
   if (currentTab === 'starred') {
     filteredEmails = getStarredEmails(filteredEmails)
-  }
-
-  if (searchItem !== '') {
-    filteredEmails = searchEmails(filteredEmails, searchItem)
-    console.log(filteredEmails)
   }
   // #endregion
 
@@ -93,7 +98,6 @@ function App() {
         filteredEmails = {filteredEmails}
         toggleRead = {toggleRead}
         toggleStar = {toggleStar}
-        searchTitle = {searchEmails}
       />
 
     </div>

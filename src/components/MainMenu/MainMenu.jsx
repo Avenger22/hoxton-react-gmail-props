@@ -13,7 +13,6 @@ function MainMenu(props) {
         filteredEmails = {filteredEmails} 
         toggleRead = {toggleRead}
         toggleStar = {toggleStar}
-        searchTitle = {searchTitle}
       />
 
     </main>
