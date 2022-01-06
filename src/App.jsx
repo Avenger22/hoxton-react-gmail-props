@@ -1,12 +1,12 @@
-// #region 'IMPORTING STUFF'
+// #region 'Importing'
 import { useState } from 'react'
 import initialEmails from './data/emails'
 
 import './App.css'
 
-import Header from './components/Header'
-import LeftMenuSidebar from './components/LeftMenuSidebar'
-import MainMenu from './components/MainMenu'
+import Header from './components/Header/Header'
+import LeftMenuSidebar from './components/LeftMenuSidebar/LeftMenuSidebar'
+import MainMenu from './components/MainMenu/MainMenu'
 // #endregion
 
 const getReadEmails = emails => emails.filter(email => !email.read)
@@ -14,13 +14,13 @@ const getStarredEmails = emails => emails.filter(email => email.starred)
 
 function App() {
 
-  // #region 'STATE OBJECT AND PIECES'
+  // #region 'State Object'
   const [emails, setEmails] = useState(initialEmails)
   const [hideRead, setHideRead] = useState(false)
   const [currentTab, setCurrentTab] = useState('inbox')
   // #endregion
 
-  // #region 'TOGGLE AND STAR FUNCTIONS, AND FILTERS ETC'
+  // #region 'Toggle functions and filters'
   const unreadEmails = emails.filter(email => !email.read)
   const starredEmails = emails.filter(email => email.starred)
 
@@ -54,7 +54,7 @@ function App() {
     filteredEmails = getStarredEmails(filteredEmails)
   // #endregion
 
-  // #region 'RETURNING HTML AND CALLIN OTHER COMPENENTS'
+  // #region 'Returning the app html and calling other components'
   return (
 
     <div className="app">
