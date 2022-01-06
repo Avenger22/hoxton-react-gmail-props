@@ -18,6 +18,7 @@ function App() {
   const [emails, setEmails] = useState(initialEmails)
   const [hideRead, setHideRead] = useState(false)
   const [currentTab, setCurrentTab] = useState('inbox')
+  const [searchItem, setSearchItem] = useState('')
   // #endregion
 
   // #region 'Toggle functions and filters'
@@ -53,13 +54,16 @@ function App() {
   if (currentTab === 'starred')
     filteredEmails = getStarredEmails(filteredEmails)
 
-  function searchTitle(title) {
+  function searchTitle() {
 
-    let searchedTitle = []
-    searchedTitle = emails.filter(email => email.title === title)
+      let searchedTitle = []
 
-    console.log(searchedTitle)
-    return searchedTitle
+      searchedTitle = emails.filter(function (item) {
+        return item.sender.includes(searchItem.toLowerCase())
+      })
+
+      console.log(searchedTitle)
+      return searchedTitle
 
   }
   // #endregion
@@ -71,6 +75,8 @@ function App() {
 
       <Header 
         searchTitle = {searchTitle}
+        searchItem = {searchItem}
+        setSearchItem = {setSearchItem}
       />
 
       <LeftMenuSidebar 
