@@ -13,20 +13,20 @@ function LeftMenuSidebar(props) {
       <ul className="inbox-list">
 
         <LeftMenuSidebarUnread 
-        currentTab = {props.currentTab}
-        setCurrentTab = {props.setCurrentTab}
-        unreadEmails = {props.unreadEmails} 
+          currentTab = {props.currentTab}
+          setCurrentTab = {props.setCurrentTab}
+          unreadEmails = {props.unreadEmails} 
         />
 
         <LeftMenuSidebarStarred 
-        currentTab = {props.currentTab}
-        setCurrentTab = {props.setCurrentTab}
-        starredEmails = {props.starredEmails}
+          currentTab = {props.currentTab}
+          setCurrentTab = {props.setCurrentTab}
+          starredEmails = {props.starredEmails}
         />
 
         <LeftMenuSidebarHideRead 
-        hideRead = {props.hideRead}
-        setHideRead = {props.setHideRead}
+          hideRead = {props.hideRead}
+          setHideRead = {props.setHideRead}
         />
 
       </ul>

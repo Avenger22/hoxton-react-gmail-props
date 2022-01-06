@@ -8,9 +8,10 @@ function MainMenu(props) {
     <main className="emails">
 
       <MainMenuItem 
-      filteredEmails = {props.filteredEmails} 
-      toggleRead = {props.toggleRead}
-      toggleStar = {props.toggleStar}
+        filteredEmails = {props.filteredEmails} 
+        toggleRead = {props.toggleRead}
+        toggleStar = {props.toggleStar}
+        searchTitle = {props.searchTitle}
       />
 
     </main>

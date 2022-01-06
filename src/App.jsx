@@ -52,6 +52,16 @@ function App() {
 
   if (currentTab === 'starred')
     filteredEmails = getStarredEmails(filteredEmails)
+
+  function searchTitle(title) {
+
+    let searchedTitle = []
+    searchedTitle = emails.filter(email => email.title === title)
+
+    console.log(searchedTitle)
+    return searchedTitle
+
+  }
   // #endregion
 
   // #region 'Returning the app html and calling other components'
@@ -59,21 +69,24 @@ function App() {
 
     <div className="app">
 
-      <Header />
+      <Header 
+        searchTitle = {searchTitle}
+      />
 
       <LeftMenuSidebar 
-      currentTab = {currentTab}
-      setCurrentTab = {setCurrentTab} 
-      hideRead = {hideRead} 
-      unreadEmails = {unreadEmails}
-      starredEmails = {starredEmails} 
-      setHideRead = {setHideRead}
+        currentTab = {currentTab}
+        setCurrentTab = {setCurrentTab} 
+        hideRead = {hideRead} 
+        unreadEmails = {unreadEmails}
+        starredEmails = {starredEmails} 
+        setHideRead = {setHideRead}
       />
 
       <MainMenu 
-      filteredEmails = {filteredEmails}
-      toggleRead = {toggleRead}
-      toggleStar = {toggleStar}
+        filteredEmails = {filteredEmails}
+        toggleRead = {toggleRead}
+        toggleStar = {toggleStar}
+        searchTitle = {searchTitle}
       />
 
     </div>
