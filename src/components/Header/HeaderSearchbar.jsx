@@ -2,25 +2,40 @@ import '../css/Header.css'
 
 function HeaderSearchbar(props) {
 
-    const {searchTitle, searchItem, setSearchItem} = props
+    const {searchItem, setSearchItem} = props
 
     return (
 
         <div className="search">
 
-            <form 
+            {/* <form 
                 className='form-search-title'
                 onSubmit={function (event) {
+
                     event.preventDefault()
-                    const title = event.target.title.value
+                    let title = event.target.emailSearch.value
                     
-                    setSearchItem(title)
-                    searchTitle(title)
+                    setSearchItem(title) //BUG changes the state and react auto renders after this onyl there
+
+                    console.log(setSearchItem(title)) //BUG
                     event.target.reset()
+                    
                 }}
-            >
-                <input className="search-bar" placeholder="Search mail" name='title'/>
-            </form>
+            > */}
+
+                <input className="search-bar" placeholder="Search mail" name='emailSearch'
+                onKeyUp={function (event) {
+
+                    event.preventDefault()
+                    const title = event.target.value
+                    
+                    console.log(title)
+                    setSearchItem(title) //BUG changes the state and react auto renders after this onyl there
+
+                }}
+                />
+
+            {/* </form> */}
 
         </div>
 

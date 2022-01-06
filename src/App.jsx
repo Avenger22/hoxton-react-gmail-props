@@ -11,6 +11,13 @@ import MainMenu from './components/MainMenu/MainMenu'
 
 const getReadEmails = emails => emails.filter(email => !email.read)
 const getStarredEmails = emails => emails.filter(email => email.starred)
+const searchEmails = (emailsParam, searchItemParam) => {
+
+  emailsParam.filter(item => {
+    item.title.toLowerCase().includes(searchItemParam.toLowerCase() || item.sender.toLowerCase().includes(searchItemParam.toLowerCase()))
+  })
+
+}
 
 function App() {
 
@@ -49,22 +56,17 @@ function App() {
 
   let filteredEmails = emails
 
-  if (hideRead) filteredEmails = getReadEmails(filteredEmails)
+  if (hideRead) { 
+    filteredEmails = getReadEmails(filteredEmails)
+  }
 
-  if (currentTab === 'starred')
+  if (currentTab === 'starred') {
     filteredEmails = getStarredEmails(filteredEmails)
+  }
 
-  function searchTitle() {
-
-      let searchedTitle = []
-
-      searchedTitle = emails.filter(function (item) {
-        return item.sender.includes(searchItem.toLowerCase())
-      })
-
-      console.log(searchedTitle)
-      return searchedTitle
-
+  if (searchItem !== '') {
+    filteredEmails = searchEmails(filteredEmails, searchItem)
+    console.log(filteredEmails)
   }
   // #endregion
 
@@ -74,7 +76,6 @@ function App() {
     <div className="app">
 
       <Header 
-        searchTitle = {searchTitle}
         searchItem = {searchItem}
         setSearchItem = {setSearchItem}
       />
@@ -92,7 +93,7 @@ function App() {
         filteredEmails = {filteredEmails}
         toggleRead = {toggleRead}
         toggleStar = {toggleStar}
-        searchTitle = {searchTitle}
+        searchTitle = {searchEmails}
       />
 
     </div>

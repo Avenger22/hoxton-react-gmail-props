@@ -4,15 +4,15 @@ import HeaderSearchbar from './HeaderSearchbar'
 
 function Header(props) {
 
-    const {searchTitle, searchItem, setSearchItem} = props
+    const {searchItem, setSearchItem} = props
     
     return (
 
         <header className="header">
 
             <HeaderLogo />
+            
             <HeaderSearchbar 
-                searchTitle = {searchTitle} 
                 searchItem = {searchItem}
                 setSearchItem = {setSearchItem}
             />
