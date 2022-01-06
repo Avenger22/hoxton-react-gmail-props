@@ -2,17 +2,35 @@ import '../css/MainMenu.css'
 
 function MainMenuItem(props) {
 
-    const {filteredEmails, toggleRead, toggleStar} = props
+    const {filteredEmails, toggleRead, toggleStar, setSelectedItemId, setItemClicked} = props
 
     return (
 
         <ul>
+
+            <button className='btn-go-back' 
+            onClick={function () {
+                // event.stopPropagation()
+                // event.preventDefault()
+                setItemClicked(false)
+                setSelectedItemId(null)
+            }}>
+
+                <span>Go Back</span>
+
+            </button>
 
             {filteredEmails.map((email, index) => (
 
             <li
                 key={index}
                 className={`email ${email.read ? 'read' : 'unread'}`}
+                onClick={function (event) {
+                    // event.stopPropagation()
+                    // event.preventDefault()
+                    setSelectedItemId(email.id)
+                    setItemClicked(true)
+                }}
             >
 
                 <div className="select">
@@ -21,7 +39,11 @@ function MainMenuItem(props) {
                         className="select-checkbox"
                         type="checkbox"
                         checked={email.read}
-                        onChange={() => toggleRead(email)}
+                        onChange={function (event) {
+                            event.stopPropagation()
+                            // event.preventDefault()
+                            return toggleRead(email)
+                        }}
                     />
 
                 </div>
@@ -32,7 +54,11 @@ function MainMenuItem(props) {
                         className="star-checkbox"
                         type="checkbox"
                         checked={email.starred}
-                        onChange={() => toggleStar(email)}
+                        onChange={function (event) {
+                            event.stopPropagation()
+                            // event.preventDefault()
+                            return toggleStar(email)
+                        }}
                     />
 
                 </div>

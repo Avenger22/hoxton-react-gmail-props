@@ -6,6 +6,7 @@
 .app > .emails > ul {
   list-style: none;
   display: grid;
+  grid-gap: 5px;
 }
 
 .email {
@@ -68,4 +69,18 @@
 
 .email .star-checkbox:checked::before {
   background-image: url(https://www.gstatic.com/images/icons/material/system/2x/star_googyellow500_20dp.png);
+}
+
+.btn-go-back {
+  width: 150px;
+  height: 30px;
+  border: none;
+  color: #000;
+  cursor: pointer;
+  background-color: orangered;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
 }

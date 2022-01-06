@@ -3,7 +3,7 @@ import MainMenuItem from './MainMenuItem'
 
 function MainMenu(props) {
 
-  const {filteredEmails, toggleRead, toggleStar, searchTitle} = props
+  const {filteredEmails, toggleRead, toggleStar, setSelectedItemId, setItemClicked} = props
 
   return (
 
@@ -13,6 +13,8 @@ function MainMenu(props) {
         filteredEmails = {filteredEmails} 
         toggleRead = {toggleRead}
         toggleStar = {toggleStar}
+        setSelectedItemId = {setSelectedItemId}
+        setItemClicked = {setItemClicked}
       />
 
     </main>

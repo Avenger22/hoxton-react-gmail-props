@@ -11,6 +11,7 @@ import MainMenu from './components/MainMenu/MainMenu'
 
 const getReadEmails = emails => emails.filter(email => !email.read)
 const getStarredEmails = emails => emails.filter(email => email.starred)
+
 // const searchEmails = (emailsParam, searchItemParam) => {
 
 //   emailsParam.filter(item => {
@@ -26,6 +27,8 @@ function App() {
   const [hideRead, setHideRead] = useState(false)
   const [currentTab, setCurrentTab] = useState('inbox')
   const [searchItem, setSearchItem] = useState('')
+  const [itemClicked, setItemClicked] = useState(false)
+  const [selectedItemId, setSelectedItemId] = useState(null)
   // #endregion
 
   // #region 'Toggle functions and filters'
@@ -58,13 +61,13 @@ function App() {
 
   if (searchItem) {
 
-    filteredEmails = filteredEmails.filter((email) =>
+    filteredEmails = filteredEmails.filter(email =>
       email.title.toLowerCase().includes(searchItem.toLowerCase() || email.sender.toLowerCase().includes(searchItem.toLowerCase()))
     )
 
     console.log(filteredEmails)
   }
-  
+
   if (hideRead) { 
     filteredEmails = getReadEmails(filteredEmails)
   }
@@ -72,6 +75,10 @@ function App() {
 
   if (currentTab === 'starred') {
     filteredEmails = getStarredEmails(filteredEmails)
+  }
+
+  if (itemClicked) {
+    filteredEmails = filteredEmails.filter(email => email.id === selectedItemId)
   }
   // #endregion
 
@@ -98,6 +105,8 @@ function App() {
         filteredEmails = {filteredEmails}
         toggleRead = {toggleRead}
         toggleStar = {toggleStar}
+        setSelectedItemId = {setSelectedItemId}
+        setItemClicked = {setItemClicked}
       />
 
     </div>
