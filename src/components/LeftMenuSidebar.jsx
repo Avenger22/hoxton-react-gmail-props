@@ -9,7 +9,7 @@ function LeftMenuSidebar(props) {
 
           <li
             className={`item ${props.currentTab === 'inbox' ? 'active' : ''}`}
-            onClick={() => setCurrentTab('inbox')}
+            onClick={() => props.setCurrentTab('inbox')}
           >
             <span className="label">Inbox</span>
             <span className="count">{props.unreadEmails.length}</span>
@@ -17,7 +17,7 @@ function LeftMenuSidebar(props) {
 
           <li
             className={`item ${props.currentTab === 'starred' ? 'active' : ''}`}
-            onClick={() => setCurrentTab('starred')}
+            onClick={() => props.setCurrentTab('starred')}
           >
             <span className="label">Starred</span>
             <span className="count">{props.starredEmails.length}</span>

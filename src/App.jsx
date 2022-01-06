@@ -6,7 +6,7 @@ import './App.css'
 
 import Header from './components/Header'
 import LeftMenuSidebar from './components/LeftMenuSidebar'
-import MainMenu from './components/mainMenu'
+import MainMenu from './components/MainMenu'
 // #endregion
 
 const getReadEmails = emails => emails.filter(email => !email.read)
@@ -62,7 +62,8 @@ function App() {
       <Header />
 
       <LeftMenuSidebar 
-      currentTab = {currentTab} 
+      currentTab = {currentTab}
+      setCurrentTab = {setCurrentTab} 
       hideRead = {hideRead} 
       unreadEmails = {unreadEmails}
       starredEmails = {starredEmails} 
