@@ -1,5 +1,5 @@
 import '../css/MainMenu.css'
-import MainMenuItem from './MainMenuItem'
+import Emails from './Emails'
 
 function MainMenu(props) {
 
@@ -9,7 +9,7 @@ function MainMenu(props) {
 
     <main className="emails">
 
-      <MainMenuItem 
+      <Emails 
         filteredEmails = {filteredEmails} 
         toggleRead = {toggleRead}
         toggleStar = {toggleStar}

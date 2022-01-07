@@ -4,22 +4,17 @@ import initialEmails from './data/emails'
 
 import './App.css'
 
+// import {getReadEmails, getStarredEmails} from '../src/functions/helperFunctions'
+
 import Header from './components/Header/Header'
 import LeftMenuSidebar from './components/LeftMenuSidebar/LeftMenuSidebar'
 import MainMenu from './components/MainMenu/MainMenu'
 // #endregion
 
-const getReadEmails = emails => emails.filter(email => !email.read)
-const getStarredEmails = emails => emails.filter(email => email.starred)
+export const getReadEmails = emails => emails.filter(email => !email.read)
+export const getStarredEmails = emails => emails.filter(email => email.starred)
 
-// const searchEmails = (emailsParam, searchItemParam) => {
-
-//   emailsParam.filter(item => {
-//     item.title.toLowerCase().includes(searchItemParam.toLowerCase() || item.sender.toLowerCase().includes(searchItemParam.toLowerCase()))
-//   })
-
-// }
-
+// #region 'App Function
 function App() {
 
   // #region 'State Object'
@@ -31,18 +26,26 @@ function App() {
   const [selectedItemId, setSelectedItemId] = useState(null)
   // #endregion
 
-  // #region 'Toggle functions and filters'
-  const unreadEmails = emails.filter(email => !email.read)
-  const starredEmails = emails.filter(email => email.starred)
+  // #region 'Conditional rendering and control of app'
+  let filteredEmails = emails
+
+  // #region 'Helper Functions'
+  function unreadEmails () {
+    return emails.filter(email => !email.read)
+  }
+
+  function starredEmails () {
+    return emails.filter(email => !email.read)
+  }
 
   const toggleStar = targetEmail => {
 
     const updatedEmails = emails =>
-      emails.map(email =>
+        emails.map(email =>
         email.id === targetEmail.id
-          ? { ...email, starred: !email.starred }
-          : email
-      )
+            ? { ...email, starred: !email.starred }
+            : email
+    )
     setEmails(updatedEmails)
 
   }
@@ -57,15 +60,21 @@ function App() {
 
   }
 
-  let filteredEmails = emails
+  const itemClickedCheck = filteredEmails => {
+    filteredEmails.filter(email => email.id === selectedItemId)
+  }
 
-  if (searchItem) {
+  const searchEmails = filteredEmails => {
 
-    filteredEmails = filteredEmails.filter(email =>
-      email.title.toLowerCase().includes(searchItem.toLowerCase() || email.sender.toLowerCase().includes(searchItem.toLowerCase()))
+    filteredEmails.filter(email =>
+        email.title.toUpperCase().includes(searchItem.toLowerCase() || email.sender.toUpperCase().includes(searchItem.toUpperCase()))
     )
 
-    console.log(filteredEmails)
+  }
+  // #endregion
+
+  if (searchItem) {
+    filteredEmails = searchEmails(filteredEmails)
   }
 
   if (hideRead) { 
@@ -78,7 +87,7 @@ function App() {
   }
 
   if (itemClicked) {
-    filteredEmails = filteredEmails.filter(email => email.id === selectedItemId)
+    filteredEmails = itemClickedCheck(filteredEmails)
   }
   // #endregion
 
@@ -115,5 +124,6 @@ function App() {
   // #endregion
 
 }
+// #endregion
 
 export default App
